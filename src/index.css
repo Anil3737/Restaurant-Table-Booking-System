@@ -1,0 +1,19 @@
+/**
+ * Global Styles
+ * 
+ * Consistent with the original index.html internal styles.
+ * Ensures the background image and basic formatting are applied across the app.
+ */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    /* Original background from index.html */
+    background: url('https://img.freepik.com/free-photo/blurred-restaurant-with-many-lights_1203-627.jpg?t=st=1722432730~exp=1722436330~hmac=ada0819a8414c7aba81b6a56638ea113e34a440d879919120a0ebe57b792e89b&w=900') no-repeat center center fixed;
+    background-size: cover;
+}
+
+* {
+    box-sizing: border-box;
+}

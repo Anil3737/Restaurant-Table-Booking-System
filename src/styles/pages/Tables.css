@@ -1,0 +1,50 @@
+/**
+ * Tables Page Styles
+ * 
+ * Extracted from food.css.
+ */
+
+.background {
+    background-color: lightpink;
+    min-height: 100vh;
+}
+
+.text {
+    font-size: 1.5rem;
+    font-family: "Caveat", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.imag {
+    width: 280px;
+    height: 280px;
+    padding: 4px;
+    object-fit: cover;
+}
+
+.head {
+    font-size: 1.2rem;
+    font-family: "Caveat", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+}
+
+.para {
+    color: green;
+    text-align: center;
+    font-weight: bold;
+}
+
+.back {
+    background-color: white;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

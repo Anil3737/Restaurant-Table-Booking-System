@@ -1,0 +1,70 @@
+/**
+ * Menu Page Styles
+ * 
+ * Extracted from exploremenu.html internal styles.
+ */
+
+.explore-menu-section {
+    background-color: #fff; /* Original internal style */
+    padding: 2rem 0;
+}
+
+.explore-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.explore-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.explore-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.explore-image {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.explore-head-con {
+    font-size: 1.3rem;
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.explore-button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.explore-button:hover {
+    background-color: #45a049;
+    color: white; /* Consistency */
+}
+
+/* SVG Arrow in Button */
+.explore-button svg {
+    margin-left: 0.5rem;
+    fill: currentColor;
+}

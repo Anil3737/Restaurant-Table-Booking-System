@@ -1,0 +1,65 @@
+/**
+ * Home Page Styles
+ * 
+ * Extracted from the internal <style> tag in index.html.
+ * Ensures the banner and clock match the original design perfectly.
+ */
+
+.banner-bg-container {
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Translucent overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    flex-direction: column;
+}
+
+.banner-heading {
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white; /* Consistency check */
+}
+
+.banner-caption {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+/* Button styles from original index.html */
+.button-customize {
+    background-color: #ff4500;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.button-customize:hover {
+    background-color: #ffd700;
+    color: #333;
+    transform: scale(1.1);
+}
+
+/* Date and Time styles */
+.date-time-container {
+    font-size: 1.7em;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 99, 71, 0.7);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    display: inline-block;
+}

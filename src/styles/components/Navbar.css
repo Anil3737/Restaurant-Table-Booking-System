@@ -1,0 +1,35 @@
+/**
+ * Navbar Styles
+ * 
+ * Extracted from the internal <style> tag in index.html.
+ */
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.navbar-brand {
+    text-align: right;
+    color: #ffd700 !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: #ffd700 !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    margin: 2px;
+    padding-right: 5px;
+}
+
+.nav-link:hover {
+    color: #ff6347 !important;
+    text-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+}
+
+.nav-item.active .nav-link {
+    color: #ff6347 !important;
+}
