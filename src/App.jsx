@@ -11,6 +11,7 @@ import About from './pages/About';
 import Admin from './pages/Admin';
 import Tables from './pages/Tables';
 import Menu from './pages/Menu';
+import UserDashboard from './pages/UserDashboard';
 
 /**
  * Main Application Component
@@ -34,6 +35,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/tables" element={<Tables />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
         </Routes>
       </div>
     </Router>
