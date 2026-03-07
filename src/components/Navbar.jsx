@@ -10,40 +10,31 @@ import '../styles/components/Navbar.css';
  */
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark">
+        <nav className="navbar navbar-expand-lg custom-navbar sticky-top">
             <div className="container">
-                {/* Logo and Brand Link */}
                 <Link className="navbar-brand" to="/">
-                    <img
-                        src="https://img.freepik.com/premium-photo/minimalistic-letter-r-logo-brand_1054941-10959.jpg?w=740"
-                        alt="Logo"
-                        width="40"
-                        className="d-inline-block align-top"
-                    />
+                    <div className="brand-icon">🍽️</div>
+                    <span>DineReserve</span>
                 </Link>
 
-                {/* Mobile Toggle Button */}
                 <button
                     className="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
-                    data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                {/* Navigation Links */}
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav ml-auto">
-                        {/* Bootstrap 4 active class handling */}
-                        <NavLink className="nav-item nav-link" to="/" end activeClassName="active">Home</NavLink>
-                        <NavLink className="nav-item nav-link" to="/admin" activeClassName="active">Admin</NavLink>
-                        <NavLink className="nav-item nav-link" to="/login" activeClassName="active">Login</NavLink>
-                        <NavLink className="nav-item nav-link" to="/register" activeClassName="active">Register</NavLink>
-                        <NavLink className="nav-item nav-link" to="/about" activeClassName="active">About</NavLink>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="navbar-nav ml-auto align-items-center">
+                        <NavLink className="nav-item nav-link" to="/" end>Home</NavLink>
+                        <NavLink className="nav-item nav-link" to="/menu">Menu</NavLink>
+                        <NavLink className="nav-item nav-link" to="/tables">Book Table</NavLink>
+                        <NavLink className="nav-item nav-link nav-btn-login ml-lg-3" to="/login">Login</NavLink>
                     </div>
                 </div>
             </div>

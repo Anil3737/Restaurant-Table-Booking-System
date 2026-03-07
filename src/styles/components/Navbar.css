@@ -1,35 +1,53 @@
-/**
- * Navbar Styles
- * 
- * Extracted from the internal <style> tag in index.html.
- */
-
-.navbar {
-    background-color: rgba(0, 0, 0, 0.7) !important;
+.custom-navbar {
+    background-color: var(--bg-creme);
+    padding: 15px 0;
+    transition: all 0.3s ease;
 }
 
 .navbar-brand {
-    text-align: right;
-    color: #ffd700 !important;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--secondary) !important;
+    font-size: 1.5rem;
+}
+
+.brand-icon {
+    background-color: var(--primary);
+    color: var(--secondary);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
 }
 
 .nav-link {
-    color: #ffd700 !important;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    margin: 2px;
-    padding-right: 5px;
+    color: var(--text-main) !important;
+    font-weight: 600;
+    margin: 0 15px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: #ff6347 !important;
-    text-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-hover) !important;
 }
 
-.nav-item.active .nav-link {
-    color: #ff6347 !important;
+.nav-btn-login {
+    background-color: #FEF3C7;
+    color: var(--primary-hover) !important;
+    padding: 8px 24px !important;
+    border-radius: 6px;
+    font-weight: 700 !important;
+}
+
+.nav-btn-login:hover {
+    background-color: var(--primary);
+    color: var(--secondary) !important;
 }

@@ -1,19 +1,97 @@
-/**
- * Global Styles
- * 
- * Consistent with the original index.html internal styles.
- * Ensures the background image and basic formatting are applied across the app.
- */
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    /* Original background from index.html */
-    background: url('https://img.freepik.com/free-photo/blurred-restaurant-with-many-lights_1203-627.jpg?t=st=1722432730~exp=1722436330~hmac=ada0819a8414c7aba81b6a56638ea113e34a440d879919120a0ebe57b792e89b&w=900') no-repeat center center fixed;
-    background-size: cover;
+:root {
+  --primary: #F7C331;
+  --primary-hover: #e5b32a;
+  --secondary: #1A1A1A;
+  --bg-creme: #FCF9EE;
+  --text-main: #1A1A1A;
+  --text-muted: #666666;
+  --white: #FFFFFF;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-creme);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+section {
+  padding: 100px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1280px !important;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 1px solid #E0E0E0;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  border-color: var(--secondary);
+}
+
+.section-tag {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--secondary);
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import './styles/styles.css';
-import './styles/responsive.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -24,7 +24,7 @@ function App() {
       <div className="App">
         {/* The Navbar is persistent across all pages */}
         <Navbar />
-        
+
         {/* Routing logic for page navigation */}
         <Routes>
           <Route path="/" element={<Home />} />
