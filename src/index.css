@@ -11,6 +11,28 @@
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Luxe Dining Specific Tokens 
+     Used for the premium reservation system to ensure a consistent, 
+     high-end visual identity across the booking flow. */
+  --luxe-yellow: #F7C331;
+  /* Primary accent color */
+  --luxe-yellow-soft: rgba(247, 195, 49, 0.1);
+  /* Used for hover states/highlights */
+  --luxe-dark: #121826;
+  /* Deep navy/black for high contrast text */
+  --luxe-bg-neutral: #F9FAFB;
+  /* Soft background to reduce eye strain */
+  --luxe-border: #E5E7EB;
+  /* Subtle borders for a clean feel */
+  --luxe-text-sub: #4B5563;
+  /* Muted text for secondary information */
+  --luxe-available: #DDE2E6;
+  /* Status color for available tables */
+  --luxe-booked: #1E293B;
+  /* Status color for already booked tables */
+  --luxe-selected: #F7C331;
+  /* Status color for user-selected tables */
 }
 
 * {

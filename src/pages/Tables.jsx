@@ -1,61 +1,203 @@
-import { Link } from 'react-router-dom';
-import { Carousel } from 'react-bootstrap';
+import React, { useState } from 'react';
 import '../styles/pages/Tables.css';
 
 /**
  * Tables Component
  * 
- * Migrated from fd.html.
- * Displays available tables using a Carousel and cards.
+ * This component implements the "LUXE DINING" reservation system.
+ * It features a sidebar for selection (Date, Guests, Time) and a 
+ * visual restaurant layout for table selection.
  */
 const Tables = () => {
-  // Sample table data to match the original cards
+  // --- State Management ---
+  // Track selected booking parameters to provide immediate visual feedback
+  const [selectedDate, setSelectedDate] = useState(5);
+  const [selectedGuests, setSelectedGuests] = useState('2');
+  const [selectedTime, setSelectedTime] = useState('02:00 PM');
+  const [selectedTable, setSelectedTable] = useState('T3');
+
+  // --- Data Definitions ---
+  // Table data matching the visual layout schema
   const tables = [
-    { id: 1, price: 230, offer: '10% discount', img: 'https://cdn.pixabay.com/photo/2012/02/28/15/37/restaurant-18311_640.jpg' },
-    { id: 2, price: 500, offer: '20% discount', img: 'https://th.bing.com/th/id/OIP.dwBjlIfPa9i7dTZ6SlFxRAHaE8?w=972&h=648&rs=1&pid=ImgDetMain' },
-    { id: 3, price: 1000, offer: '15% discount', img: 'https://th.bing.com/th/id/OIP.6zI10iwBWPMOpMY3wnLscAAAAA?rs=1&pid=ImgDetMain' },
-    { id: 4, price: 1500, offer: '5% discount', img: 'https://assets-news.housing.com/news/wp-content/uploads/2020/05/07164558/Design-ideas-for-small-and-large-dining-rooms-image-14-394x260.jpg' },
-    { id: 5, price: 130, offer: '10% discount', img: 'https://image.made-in-china.com/2f0j00pobuIYgGmrzl/Modern-Lower-Price-Muebles-Modernos-Home-Furniture-Manufacturer-MDF-Dining-Tables-Restaurant-Side-Table.jpg' },
-    { id: 6, price: 200, offer: '5% discount', img: 'https://th.bing.com/th/id/OIP.04CGk1JDdyuxfte6ocZxMQAAAA?rs=1&pid=ImgDetMainn' },
-    { id: 7, price: 3000, offer: '8% discount', img: 'https://i.pinimg.com/originals/09/87/9d/09879d51b116e40aaa9d90bd76161f03.jpg' },
-    { id: 8, price: 2500, offer: '5% discount', img: 'https://th.bing.com/th/id/OIP.EOY7BISqLNGByl-V1gLHIAHaEv?w=269&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7' }
+    { id: 'T1', seats: 2, status: 'available', label: 'Window View' },
+    { id: 'T2', seats: 4, status: 'booked', label: 'Quiet Zone' },
+    { id: 'T3', seats: 4, status: 'available', label: 'Cozy Corner' },
+    { id: 'T4', seats: 2, status: 'available', label: 'Couple Spot' },
+    { id: 'T5', seats: 6, status: 'available', label: 'Center Hall' },
+    { id: 'T6', seats: 4, status: 'available', label: 'Next to Kitchen' },
   ];
 
-  return (
-    <div className="background pb-5">
-      {/* Table Visual Showcase Carousel */}
-      <Carousel interval={3000}>
-        <Carousel.Item>
-          <img src="https://cdn11.bigcommerce.com/s-nu6nzn6ej0/images/stencil/700x900/products/5774/10249/Tiara-black-interior-2__31271.1546882867.jpg?c=2" className="d-block w-100" style={{ height: '400px', objectFit: 'cover' }} alt="Table 1" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src="https://images.picxy.com/cache/2020/8/26/ea695edf0fdb534ce461396947347aaa.jpg" className="d-block w-100" style={{ height: '400px', objectFit: 'cover' }} alt="Table 2" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src="https://th.bing.com/th/id/OIP.RQF3APClECy3F68J_jg7CAHaFj?rs=1&pid=ImgDetMain" className="d-block w-100" style={{ height: '400px', objectFit: 'cover' }} alt="Table 3" />
-        </Carousel.Item>
-      </Carousel>
+  const times = [
+    '12:00 PM', '01:00 PM', '02:00 PM',
+    '06:00 PM', '07:00 PM', '08:00 PM'
+  ];
 
-      <div className="container mt-5">
-        <h1 className="text-white mb-4">Select Your Table:</h1>
-        
-        {/* Table Cards Grid */}
+  const guests = ['1', '2', '3', '4', '5+'];
+
+  return (
+    <div className="tables-page">
+      <div className="container">
+        {/* Header Section: Premium branding and inviting subtitle */}
+        <header className="tables-header">
+          <h1 className="tables-title">Reserve Your Table</h1>
+          <p className="tables-subtitle">Join us for an unforgettable culinary journey.</p>
+        </header>
+
         <div className="row">
-          {tables.map(table => (
-            <div key={table.id} className="col-12 col-md-6 col-lg-3 mb-4">
-              <div className="card h-100 back shadow border-0" style={{ background: '#fff', borderRadius: '10px', overflow: 'hidden' }}>
-                <img src={table.img} className="card-img-top" style={{ height: '180px', objectFit: 'cover' }} alt={`Table ${table.id}`} />
-                <div className="card-body text-center">
-                  <h5 className="card-title head">Price: ₹{table.price}</h5>
-                  <p className="card-text para">Offer: {table.offer}</p>
-                  <p className="small text-muted">Use AmazonPay for additional cashback</p>
-                  <Link to="/menu" className="btn btn-warning btn-sm btn-block">View Menu</Link>
+          {/* --- Sidebar: Selection Controls --- */}
+          <div className="col-lg-4">
+
+            {/* Date Picker: Simplified calendar for demo purposes */}
+            <section className="booking-section">
+              <div className="section-label">
+                <span>📅</span> Select Date
+              </div>
+              <div className="calendar-mini">
+                <div className="calendar-header">
+                  <button className="btn btn-link p-0 text-dark">&lt;</button>
+                  <span>October 2023</span>
+                  <button className="btn btn-link p-0 text-dark">&gt;</button>
+                </div>
+                <div className="calendar-grid">
+                  {/* Weekday headers */}
+                  {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => (
+                    <div key={d} className="calendar-day-name">{d}</div>
+                  ))}
+
+                  {/* Month days: Styled to match the design grid */}
+                  <div className="calendar-day-empty"></div>
+                  <div className="calendar-day-empty"></div>
+                  <div className="calendar-day-empty"></div>
+                  <div className="calendar-day-empty"></div>
+                  <div className="calendar-day-empty"></div>
+                  <div className="calendar-day">1</div>
+                  <div className="calendar-day">2</div>
+                  <div className="calendar-day">3</div>
+                  <div className="calendar-day">4</div>
+                  <div className={`calendar-day ${selectedDate === 5 ? 'active' : ''}`} onClick={() => setSelectedDate(5)}>5</div>
+                  <div className="calendar-day">6</div>
+                  <div className="calendar-day">7</div>
+                  <div className="calendar-day">8</div>
+                  <div className="calendar-day">9</div>
+                  <div className="calendar-day">10</div>
                 </div>
               </div>
+            </section>
+
+            {/* Guest Selector: Adaptive buttons for different party sizes */}
+            <section className="booking-section">
+              <div className="section-label">
+                <span>👥</span> Guests
+              </div>
+              <div className="guest-selector">
+                {guests.map(g => (
+                  <button
+                    key={g}
+                    className={`guest-btn ${selectedGuests === g ? 'active' : ''} ${g === '5+' ? 'full-width mt-2' : ''}`}
+                    onClick={() => setSelectedGuests(g)}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            {/* Time Selector: Grid of available slots */}
+            <section className="booking-section">
+              <div className="section-label">
+                <span>🕒</span> Available Times
+              </div>
+              <div className="time-grid">
+                {times.map(t => (
+                  <button
+                    key={t}
+                    className={`time-btn ${selectedTime === t ? 'active' : ''}`}
+                    onClick={() => setSelectedTime(t)}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          {/* --- Main Content: Visual Layout & Details --- */}
+          <div className="col-lg-8">
+            {/* Restaurant Layout: An interactive map of the floor plan */}
+            <section className="layout-container mb-4">
+              <div className="layout-header">
+                <h3 className="m-0 font-weight-bold">Restaurant Layout</h3>
+                <div className="layout-legend">
+                  <div className="legend-item"><div className="legend-dot dot-selected"></div> Selected</div>
+                  <div className="legend-item"><div className="legend-dot dot-available"></div> Available</div>
+                  <div className="legend-item"><div className="legend-dot dot-booked"></div> Booked</div>
+                </div>
+              </div>
+
+              <div className="layout-map">
+                {/* Environmental labels */}
+                <div className="layout-area-label label-entrance">Entrance</div>
+                <div className="layout-area-label label-kitchen">Open Kitchen</div>
+                <div className="main-aisle-label">Main Aisle</div>
+
+                {/* Dynamic Table Nodes: Mapped to CSS grid positions */}
+                {tables.map(table => (
+                  <div
+                    key={table.id}
+                    data-id={table.id}
+                    className={`table-node ${table.status} ${selectedTable === table.id ? 'selected' : ''}`}
+                    onClick={() => table.status === 'available' && setSelectedTable(table.id)}
+                  >
+                    <h4>{table.id}</h4>
+                    <span>{table.seats} Seats</span>
+                    {selectedTable === table.id && <div className="node-status-label">SELECTED</div>}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Table Detail Cards: Specific info for featured tables */}
+            <div className="row">
+              {tables.filter(t => ['T1', 'T3', 'T5'].includes(t.id)).map(table => (
+                <div key={table.id} className="col-md-4 mb-3">
+                  <div className="table-detail-card">
+                    <div className="card-top-info">
+                      <div className="table-name">Table {table.id.replace('T', '')}</div>
+                      <div className="seat-badge">{table.seats} Seats</div>
+                    </div>
+                    <p className="table-desc">{table.label}</p>
+                    <button
+                      className={`btn-book ${selectedTable === table.id ? 'selected' : ''}`}
+                      onClick={() => table.status === 'available' && setSelectedTable(table.id)}
+                    >
+                      {selectedTable === table.id ? 'Confirm Selection' : 'Book Now'}
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
+
+      {/* Footer Section: Informational and legal links */}
+      <footer className="mt-5 pt-5 pb-3 border-top bg-white">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center flex-wrap">
+            <div className="d-flex align-items-center mb-2">
+              <span className="mr-3">🗺️ 123 Culinary Ave, Gastronomy District</span>
+            </div>
+            <div className="mb-2">
+              <a href="#" className="text-secondary mx-2">Privacy Policy</a>
+              <a href="#" className="text-secondary mx-2">Terms of Service</a>
+              <a href="#" className="text-secondary mx-2">Group Bookings</a>
+            </div>
+            <div className="text-muted">
+              © {new Date().getFullYear()} Luxe Dining Restaurant Group
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

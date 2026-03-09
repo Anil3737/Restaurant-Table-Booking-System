@@ -1,50 +1,387 @@
-/**
- * Tables Page Styles
- * 
- * Extracted from food.css.
- */
-
-.background {
-    background-color: lightpink;
+.tables-page {
+    background-color: var(--luxe-bg-neutral);
     min-height: 100vh;
+    padding-bottom: 5rem;
+    font-family: var(--font-body);
 }
 
-.text {
-    font-size: 1.5rem;
-    font-family: "Caveat", sans-serif;
-    font-style: italic;
-    font-weight: bold;
-    color: blue;
+/* Page Header: Visual anchor for the reservation journey */
+.tables-header {
+    padding: 4rem 0;
+}
+
+.tables-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--luxe-dark);
+    margin-bottom: 1rem;
+}
+
+.tables-subtitle {
+    font-size: 1.25rem;
+    color: var(--luxe-text-sub);
+}
+
+/* Sidebar Components: Consistent card-based UI for selection controls */
+.booking-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--luxe-border);
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--luxe-dark);
+}
+
+.section-label i {
+    color: #F7C331;
+}
+
+/* Calendar: Custom mini-grid styling for day selection */
+.calendar-mini {
+    width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
     text-align: center;
-    padding-top: 20px;
 }
 
-.imag {
-    width: 280px;
-    height: 280px;
-    padding: 4px;
-    object-fit: cover;
+.calendar-day-name {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-bottom: 0.5rem;
 }
 
-.head {
-    font-size: 1.2rem;
-    font-family: "Caveat", sans-serif;
-    font-style: italic;
-    font-weight: bold;
-    color: blue;
-    text-align: center;
+.calendar-day {
+    padding: 8px 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
 }
 
-.para {
-    color: green;
-    text-align: center;
-    font-weight: bold;
+.calendar-day:hover {
+    background: var(--luxe-yellow-soft);
 }
 
-.back {
-    background-color: white;
-    margin: 10px;
-    padding-bottom: 10px;
+.calendar-day.active {
+    background: var(--luxe-yellow);
+    color: var(--luxe-dark);
+    font-weight: 700;
+}
+
+/* Selector Buttons: Consistent styles for Guests and Time slots */
+.guest-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.guest-btn {
+    flex: 1;
+    min-width: 45px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--luxe-border);
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.guest-btn.active {
+    background: var(--luxe-yellow);
+    border-color: var(--luxe-yellow);
+}
+
+.guest-btn.full-width {
+    flex: 0 0 100%;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.time-btn {
+    padding: 10px;
+    border: 1px solid var(--luxe-border);
+    background: white;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.time-btn.active {
+    background: var(--luxe-yellow);
+    border-color: var(--luxe-yellow);
+}
+
+/* Restaurant Floor Plan: An interactive grid representing the physical space */
+.layout-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--luxe-border);
+}
+
+.layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.layout-legend {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--luxe-text-sub);
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.dot-selected {
+    background: var(--luxe-selected);
+}
+
+.dot-available {
+    background: var(--luxe-available);
+}
+
+.dot-booked {
+    background: var(--luxe-booked);
+}
+
+.layout-map {
+    border: 2px dashed #FADD95;
+    border-radius: 8px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+    min-height: 400px;
+}
+
+/* Strategic positioning of tables to mirror the physical floor plan */
+.table-node[data-id="T1"] {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.table-node[data-id="T2"] {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.table-node[data-id="T3"] {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.table-node[data-id="T4"] {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.table-node[data-id="T5"] {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.table-node[data-id="T6"] {
+    grid-area: 3 / 3 / 4 / 4;
+}
+
+.layout-area-label {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #F7C331;
+    padding: 4px 12px;
+    border: 1px solid #FADD95;
+    background: #FFF9E9;
+}
+
+.label-entrance {
+    top: 10px;
+    left: 10px;
+}
+
+.label-kitchen {
+    bottom: 10px;
+    right: 10px;
+}
+
+.main-aisle-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--luxe-available);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+.table-node {
+    width: 100%;
+    max-width: 110px;
+    height: 90px;
+    justify-self: center;
+    align-self: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.table-node h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.table-node span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.table-node.available {
+    background: var(--luxe-available);
+    color: var(--luxe-dark);
+}
+
+.table-node.booked {
+    background: var(--luxe-booked);
+    color: white;
+}
+
+.table-node.selected {
+    background: var(--luxe-yellow);
+    color: var(--luxe-dark);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.node-status-label {
+    position: absolute;
+    bottom: -20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--luxe-yellow);
+}
+
+/* Detail Cards: Providing more depth for individual tables */
+.table-detail-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--luxe-border);
+    height: 100%;
+}
+
+.card-top-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.table-name {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.seat-badge {
+    background: #FFF9E9;
+    color: #F7C331;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.table-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-book {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #FFF9E9;
+    color: var(--luxe-dark);
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.btn-book.selected {
+    background: var(--luxe-yellow);
+    box-shadow: 0 4px 12px rgba(247, 195, 49, 0.4);
+}
+
+/* Responsiveness tweaks */
+@media (max-width: 991px) {
+    .tables-title {
+        font-size: 2.5rem;
+    }
+
+    .calendar-grid {
+        gap: 2px;
+    }
+
+    .layout-map {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
 }
