@@ -50,7 +50,7 @@ Open your browser and navigate to the URL provided in the terminal (usually `htt
 
 ### Building for Production
 
-To create a production-ready build:
+To create a production-ready build
 
 ```bash
 npm run build
